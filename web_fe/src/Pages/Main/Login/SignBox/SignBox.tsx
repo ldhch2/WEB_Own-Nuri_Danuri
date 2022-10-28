@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import logo from '../../../../images/logo.png'
 
+const db = require('./config/db');
+const router = require('./user_inform')
+
 interface props {
     certificate: boolean
 }
@@ -17,9 +20,19 @@ const SignBox: React.FC<props> = ({ certificate }) => {
 
     const onValid = (data: any) => {
         console.log("Valid!");
+        alert("valid");
         const { id, pw, armyunit } = data;
         const defaultData = { id, name: 'default', armyunit, pw, nickname: 'default', armyclass: '이병' };
         axios.post('/UserInfo', defaultData);
+        router.post('/UserInfo', (req,res,next) =>{
+            const param = [req.body.id, req.body.pw, req.body.armyunit]
+        
+            db.query('INSERT INTO Users(`id`,`pw`,`armyunit`) VALUES (?,?,?)' , param , (err, row) =>{
+                if(err) console.log(err)
+            })
+            
+            res.end
+        })
     };
  
     
