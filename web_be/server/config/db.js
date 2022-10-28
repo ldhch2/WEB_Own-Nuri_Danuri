@@ -4,7 +4,7 @@ var db = mysql.createConnection({
   host     : '211.42.154.87',
   user     : 'root',
   password : '12345',
-  database : 'my_db',
+  database : 'user_db',
   port     : '3306'  
 });
  
@@ -22,10 +22,10 @@ var db = mysql.createConnection({
 db.connect();
 
 
-db.query('SELECT * from USERS', (error, rows, fields) => {
-  if (error) throw error;
-  console.log('User info is: ', rows);
-});
+// db.query('SELECT * from USERS', (error, rows, fields) => {
+//   if (error) throw error;
+//   console.log('User info is: ', rows);
+// });
 
 
 

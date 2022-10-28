@@ -17,11 +17,12 @@ const SignBox: React.FC<props> = ({ certificate }) => {
 
     const onValid = (data: any) => {
         console.log("Valid!");
-
         const { id, pw, armyunit } = data;
         const defaultData = { id, name: 'default', armyunit, pw, nickname: 'default', armyclass: '이병' };
         axios.post('/UserInfo', defaultData);
     };
+ 
+    
 
     // 사용신청
     if (certificate) {
